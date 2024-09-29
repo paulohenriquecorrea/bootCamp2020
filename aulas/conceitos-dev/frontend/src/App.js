@@ -14,11 +14,18 @@ function App() {
     });
   }, []);
 
-  function handleAddProjects() {
+  async function handleAddProjects() {
     // projects.push(`Novo Projeto ${Date.now()}`);
+    // setProjects([...projects, `Novo Projeto ${Date.now()}`]);
 
-    setProjects([...projects, `Novo Projeto ${Date.now()}`]);
-    console.log(projects);
+    const response = await api.post('/projects', {
+      title: `Projeto API ${Date.now()}`,
+      owner: 'Front',
+    });
+
+    const project = response.data;
+
+    setProjects([...projects, project]);
   }
   return (
     <>
