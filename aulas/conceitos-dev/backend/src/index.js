@@ -2,7 +2,9 @@ const express = require('express');
 // import { express } from 'express';
 const cors = require('cors');
 
-const { uuid, isUuid } = require('uuidv4');
+const { isUuid } = require('uuidv4');
+
+const {v4: uuidv4} = require('uuid')
 
 const app = express();
 
@@ -47,7 +49,7 @@ app.post('/projects', (request, response) => {
   const { title, owner } = request.body;
 
   const project = {
-    id: uuid(),
+    id: uuidv4(),
     title: title,
     owner: owner,
   };
